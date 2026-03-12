@@ -32,27 +32,12 @@ const proofPoints = [
 	<!-- Does This Sound Like You? -->
 	<section class="px-6 py-24 max-w-3xl mx-auto">
 		<h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-12">Does This Sound Like You?</h2>
-		<ul class="space-y-6 text-lg text-stone-700">
-			<li class="flex gap-3">
-				<span class="text-stone-400 shrink-0">&bull;</span>
-				<span>You vibe-coded an app, but you're not an engineer and aren't sure how to support it with live users.</span>
-			</li>
-			<li class="flex gap-3">
-				<span class="text-stone-400 shrink-0">&bull;</span>
-				<span>Your senior technical staff doesn't have enough time to spend in areas they are most needed.</span>
-			</li>
-			<li class="flex gap-3">
-				<span class="text-stone-400 shrink-0">&bull;</span>
-				<span>Your development has persistent slow-downs or quality issues that are hard to diagnose.</span>
-			</li>
-			<li class="flex gap-3">
-				<span class="text-stone-400 shrink-0">&bull;</span>
-				<span>You're worried about insufficient technical oversight — unsupervised AI processes, junior engineers, or inherited tech debt.</span>
-			</li>
-			<li class="flex gap-3">
-				<span class="text-stone-400 shrink-0">&bull;</span>
-				<span>Your upcoming launch secures critical revenue, and you need to de-risk it from the engineering side.</span>
-			</li>
+		<ul class="space-y-6 text-lg text-stone-700 list-disc list-outside pl-6 marker:text-stone-400">
+			<li>You vibe-coded an app, but you're not an engineer and aren't sure how to support it with live users.</li>
+			<li>Your senior technical staff doesn't have enough time to spend in areas they are most needed.</li>
+			<li>Your development has persistent slow-downs or quality issues that are hard to diagnose.</li>
+			<li>You're worried about insufficient technical oversight — unsupervised AI processes, junior engineers, or inherited tech debt.</li>
+			<li>Your upcoming launch secures critical revenue, and you need to de-risk it from the engineering side.</li>
 		</ul>
 		<div class="mt-12">
 			<BookingCta />
@@ -101,7 +86,7 @@ const proofPoints = [
 			</a>
 		</div>
 		<div class="mt-8 text-sm text-stone-400">
-			<p>&copy; 2026 Cordova Strategy</p>
+			<p>&copy; {new Date().getFullYear()} Cordova Strategy</p>
 			<p class="mt-1">Remote | Sacramento &amp; SF Bay Area</p>
 		</div>
 	</footer>
