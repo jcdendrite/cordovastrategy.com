@@ -1,0 +1,47 @@
+---
+import '../styles/global.css'
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={canonicalURL} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ProfessionalService",
+			"name": "Cordova Strategy",
+			"description": description,
+			"url": "https://cordovastrategy.com",
+			"founder": {
+				"@type": "Person",
+				"name": "Jared Cordova"
+			},
+			"areaServed": [
+				{ "@type": "City", "name": "Sacramento" },
+				{ "@type": "City", "name": "San Francisco" }
+			],
+			"serviceType": "Technology Consulting"
+		})} />
+	</head>
+	<body class="antialiased">
+		<slot />
+	</body>
+</html>
