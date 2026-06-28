@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg: #F7F6F2;
+  --color-green: #14342A;
+  --color-ink: #14140F;
+  --color-accent: #2F6B4F;
+  --color-accent-d: #27583f;
+  --color-tint: #C9D6CE;
+  --color-tint-band: #eef2ee;
+  --color-muted: #5f6b64;
+  --color-line: #e4e6e1;
+  --color-on-green-body: #dce7e0;
+  --color-on-green-muted: #9ec3ad;
+  --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Scenario card left accent bar — not expressible as a utility */
+  .scenario-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    padding: 20px 26px 20px 28px;
+  }
+  .scenario-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--color-accent);
+  }
+}

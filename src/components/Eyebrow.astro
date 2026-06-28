@@ -1,0 +1,7 @@
+---
+interface Props { onDark?: boolean; class?: string }
+const { onDark = false, class: extraClass } = Astro.props
+---
+<div class={`font-mono text-[12.5px] font-medium tracking-[0.06em] uppercase ${onDark ? 'text-on-green-muted' : 'text-accent'} ${extraClass ?? 'mb-[18px]'}`}>
+  <slot />
+</div>

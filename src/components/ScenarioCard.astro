@@ -1,0 +1,13 @@
+---
+interface Props {
+  index: string
+  tag: string
+  body: string
+}
+const { index, tag, body } = Astro.props
+---
+<div class="scenario-card">
+  <div class="font-mono text-[12px] text-accent tracking-[0.04em]">{index}</div>
+  <div class="font-display font-semibold text-[18px] mt-[2px] mb-[6px] tracking-[-0.01em]">{tag}</div>
+  <p class="text-[16.5px] text-[#41463f] m-0 max-w-[82ch]">{body}</p>
+</div>

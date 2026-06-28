@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Eyebrow from '../components/Eyebrow.astro'
+import EngagementLane from '../components/EngagementLane.astro'
+
+const engagements = [
+  {
+    eyebrow: 'Engagement 01',
+    title: 'AI Transformation',
+    forWhom: 'For executive teams whose engineers are adopting AI faster than the organization knows how to absorb the changes.',
+    body: 'I help you figure out which tools actually fit your organization and workflow rather than the ones with the loudest pitch, set guardrails on AI-assisted development, and get control of runaway token spend, building the operating discipline that turns AI from a productivity story into a business one. Most of this runs with the CTO or VP Engineering, with a parallel conversation with HR or People Ops about how AI is changing the shape of engineering roles.',
+    showsUpAs: 'Working sessions with engineering leadership, a written AI operating policy, real cost analysis on current spend, and a 90-day plan that names the specific moves and the people accountable for them.',
+  },
+  {
+    eyebrow: 'Engagement 02',
+    title: 'Technical and Business Alignment',
+    forWhom: 'For founders and product owners working with engineering teams who want a partner who can hold both sides of the conversation.',
+    body: 'I sit between the product mandate and the technical reality. I name the trade-offs in language both sides can act on, and I help you make calls that are technically sound and commercially honest.',
+    showsUpAs: 'Joint product and engineering working sessions, written decision memos that survive after I leave, and a feasibility-versus-impact map you can use in board conversations.',
+  },
+  {
+    eyebrow: 'Engagement 03',
+    title: 'Engineering Leadership Development',
+    forWhom: 'For companies with talented engineering managers and directors who haven\'t led at this scope or in this kind of ambiguity before.',
+    body: 'I coach them in real time, on the actual situations they\'re facing, until they\'re making the calls themselves. This isn\'t a training program. It\'s parallel work to whatever the technical engagement is, and the goal is for the manager to no longer need me.',
+    showsUpAs: 'One-on-one coaching, manager group sessions when that\'s the right shape, and a written growth plan for each leader that the executive sponsor signs off on.',
+  },
+  {
+    eyebrow: 'Engagement 04',
+    title: 'Focused Diagnostic',
+    forWhom: 'For a specific decision in front of you, or a sense that something structural is off and you want a clean read before committing budget. Duration: 2 to 3 weeks, fixed fee.',
+    body: 'I work the question end to end. I talk to the people involved, look at the work, and write up what I find with specific recommendations. You walk away with the read and the option to stop there or move into a longer engagement. Most engagements with me start here.',
+    showsUpAs: '2 to 3 weeks of work, a written report, a meeting to walk through it, and a clear yes-or-no on next steps.',
+  },
+]
+
+const anchorEngagement = {
+  eyebrow: 'The anchor',
+  title: 'Full Picture',
+  forWhom: 'For situations where you need a single point of accountability across technical, business, and people decisions.',
+  body: 'This is the version of working together where I\'m holding all of the above at once. Engagements typically start with a 2 to 3 week diagnostic, then move into a multi-month engagement working with executives, engineering leaders, and the team in parallel. It is not the default. It\'s the right shape only when the technical, business, and people decisions are too tangled to hand to separate people.',
+  showsUpAs: 'A multi-month engagement with executive sponsor check-ins, embedded work with engineering leaders, hands-on technical work when the situation calls for it, and a single point of accountability for the outcome.',
+}
+
+const steps = [
+  { title: 'Intro call', body: '30 minutes, no charge. You tell me what\'s not working. I tell you whether I\'m the right fit.' },
+  { title: 'Diagnostic proposal', body: 'If we\'re a fit, I write up what I think the actual question is, what answering it would take, and a fixed fee for the work. You either agree or we revise.' },
+  { title: 'Diagnostic engagement', body: '2 to 3 weeks. I work through what\'s happening, talk to the people involved, and produce a written read.' },
+  { title: 'Decision point', body: 'We either stop here or move into a longer engagement. The diagnostic is built to make this call easy.' },
+  { title: 'Ongoing engagement', body: 'Scope and duration depend on what the diagnostic surfaced. Pricing is set after the diagnostic and put in writing.' },
+]
+
+const faqs = [
+  { q: 'Who is this for?', a: 'Executive teams (CEO, CTO, COO, VP Engineering, Head of People Ops) at venture-backed companies at Series A and above, typically 30 to 300 employees. If you have an engineering organization moving on AI and no clear sense of whether they\'re moving in the right direction, you\'re in the right place.' },
+  { q: 'Are you a fractional CTO?', a: 'Sometimes. The label fits some engagements and not others. I\'d rather show up as what the engagement actually needs than wear the label that markets best.' },
+  { q: 'Will you replace our existing engineering leadership?', a: 'No. Most of my engagements work alongside the existing CTO or VP Engineering, sometimes as a thought partner, sometimes as a coach to managers a layer down.' },
+  { q: 'Do you write code?', a: 'Yes. I\'m hands-on with AI-assisted development tools (Claude Code, Cursor, Lovable, Supabase) and I\'ve shipped production work on them for clients in the last six months. Whether the engagement involves me writing code depends on what you need.' },
+  { q: 'How much do engagements cost?', a: 'Engagements scale with scope and duration. A Focused Diagnostic is the most predictable starting point and is fixed fee. After the intro call, I\'ll send a written proposal with a number on it.' },
+  { q: 'Where are you based?', a: 'Sacramento and the SF Bay Area. Most engagements are remote with occasional in-person time when it matters.' },
+]
+---
+
+<Layout
+  title="Solutions — Cordova Strategy"
+  description="Engagement shapes for AI transformation, technical and business alignment, engineering leadership development, and focused diagnostics. Jared Cordova, fractional engineering leadership."
+>
+  <!-- HERO -->
+  <section class="bg-green text-white py-[92px] pb-[80px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow onDark>How I work</Eyebrow>
+      <h1 class="text-[46px] max-w-[24ch] mb-6">I don't have a package menu. Engagements are shaped to the situation.</h1>
+      <p class="text-[19.5px] leading-[1.58] text-[#dce7e0] max-w-[48ch] font-sans">There are four shapes I see most often, and a fifth that pulls them all together when the situation calls for it.</p>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENTS -->
+  <section class="py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      {engagements.map(e => (
+        <EngagementLane
+          eyebrow={e.eyebrow}
+          title={e.title}
+          forWhom={e.forWhom}
+          body={e.body}
+          showsUpAs={e.showsUpAs}
+        />
+      ))}
+      <EngagementLane
+        eyebrow={anchorEngagement.eyebrow}
+        title={anchorEngagement.title}
+        forWhom={anchorEngagement.forWhom}
+        body={anchorEngagement.body}
+        showsUpAs={anchorEngagement.showsUpAs}
+        isAnchor={true}
+      />
+    </div>
+  </section>
+
+  <!-- HOW AN ENGAGEMENT WORKS -->
+  <section class="bg-tint-band py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>How an engagement works</Eyebrow>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">From first call to ongoing work.</h2>
+      <div class="mt-9">
+        {steps.map((step, i) => (
+          <div class="grid grid-cols-[54px_1fr] gap-5 py-5 border-t border-line">
+            <div class="font-mono text-[22px] text-accent font-semibold">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div>
+              <h3 class="font-display text-[18px] font-semibold mb-1">{step.title}</h3>
+              <p class="text-[16px] text-[#41463f] max-w-[70ch]">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>Things people ask</Eyebrow>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">Questions worth answering up front.</h2>
+      <div class="mt-[34px]">
+        {faqs.map(faq => (
+          <div class="py-[22px] border-t border-line">
+            <h3 class="font-display text-[19px] font-semibold tracking-[-0.01em] mb-[7px]">{faq.q}</h3>
+            <p class="text-[16.5px] text-[#41463f] max-w-[80ch]">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

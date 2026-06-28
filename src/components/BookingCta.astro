@@ -1,3 +1,21 @@
-<a href="/book-intro" rel="nofollow noopener" class="inline-block bg-stone-900 text-white px-8 py-4 text-lg font-medium rounded-lg hover:bg-stone-800 transition-colors">
-	Book an Intro Call
-</a>
+---
+interface Props {
+  variant?: 'solid' | 'light'
+  label?: string
+  helper?: string
+}
+const { variant = 'solid', label = 'Book an intro call', helper } = Astro.props
+---
+<div>
+  <a
+    href="/book-intro"
+    class={`inline-block font-semibold text-[16px] px-[30px] py-[15px] rounded-full no-underline transition-colors cursor-pointer ${
+      variant === 'light'
+        ? 'bg-white text-green hover:bg-[#eef1ec]'
+        : 'bg-accent text-white hover:bg-accent-d'
+    }`}
+  >
+    {label}
+  </a>
+  {helper && <p class={`text-[14px] mt-[14px] ${variant === 'light' ? 'text-[#a9c6b6]' : 'text-muted'}`}>{helper}</p>}
+</div>

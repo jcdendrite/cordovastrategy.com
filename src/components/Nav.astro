@@ -1,0 +1,18 @@
+---
+interface Props { currentPath: string }
+const { currentPath } = Astro.props
+const isHome = currentPath === '/' || currentPath === ''
+const isSolutions = currentPath.startsWith('/solutions')
+---
+<nav class="sticky top-0 z-50 bg-green text-white" aria-label="Main navigation">
+  <div class="max-w-[1080px] mx-auto px-8 flex items-center gap-7 h-[68px]">
+    <a href="/" class="font-display text-[20px] font-semibold tracking-[-0.01em] text-white no-underline">
+      Cordova Strategy<span class="text-[#7fb295]">.</span>
+    </a>
+    <div class="ml-auto flex items-center gap-[26px]">
+      <a href="/" class={`hidden min-[600px]:inline-block text-[15px] font-medium no-underline transition-colors ${isHome ? 'text-white' : 'text-[#dfe8e2] hover:text-white'}`}>Home</a>
+      <a href="/solutions" class={`hidden min-[600px]:inline-block text-[15px] font-medium no-underline transition-colors ${isSolutions ? 'text-white' : 'text-[#dfe8e2] hover:text-white'}`}>Solutions</a>
+      <a href="/book-intro" class="bg-accent hover:bg-accent-d text-white text-[14px] font-medium px-5 py-[10px] rounded-full no-underline transition-colors">Book an intro call</a>
+    </div>
+  </div>
+</nav>

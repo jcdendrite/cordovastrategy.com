@@ -1,93 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import BookingCta from '../components/BookingCta.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Eyebrow from '../components/Eyebrow.astro'
+import ScenarioCard from '../components/ScenarioCard.astro'
+import HeroArt from '../components/HeroArt.astro'
 import { Image } from 'astro:assets'
+
 const headshotUrl = 'https://assets.cordovastrategy.com/headshot.jpg'
 
+const scenarios = [
+  { index: '01', tag: 'The AI-first mandate', body: 'Your CEO has declared the company AI-first. Your engineering org is trying to add AI to the workflow, but you can’t tell if it’s actually helping the team deliver quality results, faster.' },
+  { index: '02', tag: 'The buried CTO', body: 'You’re a CTO getting pulled into the weeds on every problem. The strategic work that should fill your week, the next year, the next hire, the next architectural call, keeps getting bumped.' },
+  { index: '03', tag: 'The non-engineer founder', body: 'You shipped a product on AI tools, you have real users, and you don’t know how to assess whether what you built will hold up.' },
+  { index: '04', tag: 'Runaway AI spend', body: 'Your AI spend is climbing, and you can’t tell which of it is moving the business forward and which is just expensive churn.' },
+  { index: '05', tag: 'Tool overload', body: 'There are a thousand AI tools and every vendor swears theirs is essential. Not all of them fit your organization or your workflow, and the wrong stack quietly becomes a bottleneck you pay for later.' },
+  { index: '06', tag: 'Managers in the deep end', body: 'Your engineering managers are talented, but they haven’t led through this kind of ambiguity before. You need them driving the organization through it, not waiting for it to resolve.' },
+]
+
+const whatIDo = [
+  { n: '01 — Clarify', body: 'I jump in on the deep end of the pool, analyze your existing workflows, interview key stakeholders and team members, and observe your machine in motion.' },
+  { n: '02 — Disentangle', body: 'I look at it from the technical angle, the business angle, and the people angle, and I disentangle the actual problem from the noise.' },
+  { n: '03 — Execute', body: 'Once it’s defined, I come back to you with a plan on how to execute it, then go in and work with the team directly.' },
+]
+
 const proofPoints = [
-	{ metric: '$2.3M+', description: 'Annual cost savings through platform modernization' },
-	{ metric: '90%', description: 'Partner retention through data platform migration' },
-	{ metric: '50%', description: 'Faster incident resolution through modernized tooling' },
-	{ metric: 'Millions', description: 'Users supported through infrastructure scaling' },
-	{ metric: '2', description: 'Products built and launched from zero to market' },
+  { num: '$2.3M+', lbl: 'Annual cost savings through platform modernization' },
+  { num: '50%', lbl: 'Faster incident resolution through modernized tooling' },
+  { num: 'Millions', lbl: 'Users supported through infrastructure scaling' },
+]
+
+const caseStudyRows = [
+  { k: 'Situation', v: 'The founder had a clear product vision and no in-house engineering. She had shipped a working prototype on AI tools and was facing real users, a feature roadmap, and questions she didn’t know how to answer about reliability, security, and scale.' },
+  { k: 'Work', v: 'I came in as the technical half of a two-person partnership. I built and shipped the production version on Lovable and Supabase, sized and prioritized features against feasibility, and translated the technical posture into language she could use with beta users and investors.' },
+  { k: 'Outcome', v: 'The product is live, in user testing, and on track for submission. The founder has a written technical roadmap she can carry into a fundraising conversation and a clear sense of which decisions are hers and which she can hand to me.' },
 ]
 ---
 
 <Layout
-	title="Cordova Strategy — Jared Cordova"
-	description="Fractional CTO and technology consulting for high-growth companies. 15 years of engineering leadership experience."
+  title="Cordova Strategy — Jared Cordova"
+  description="Fractional engineering leadership for companies navigating AI adoption. Jared Cordova clarifies your AI strategy, untangles technical and people decisions, and executes alongside your team."
 >
-	<!-- Header -->
-	<header class="px-6 py-6 max-w-5xl mx-auto">
-		<p class="text-lg font-semibold tracking-tight text-stone-900">Cordova Strategy <span class="text-stone-400">—</span> Jared Cordova</p>
-	</header>
+  <!-- HERO -->
+  <section class="bg-green text-white py-[92px] pb-[88px]">
+    <div class="max-w-[1080px] mx-auto px-8 grid grid-cols-[1.15fr_0.85fr] gap-[54px] items-center max-[860px]:grid-cols-1 max-[860px]:gap-[34px]">
+      <div>
+        <Eyebrow onDark>Fractional engineering leadership</Eyebrow>
+        <p class="font-display text-[28px] font-medium text-[#a9c6b6] max-w-[30ch] mb-[6px] leading-snug tracking-normal">Your engineering team is adopting AI.</p>
+        <h1 class="text-[44px] max-w-[18ch] mb-[22px]">But is AI making your organization <span class="text-[#7fb295]">stronger</span> or just faster at the wrong things?</h1>
+        <p class="text-[19.5px] leading-[1.58] text-on-green-body max-w-[48ch] mb-[34px] font-sans">I get into the technical detail and untangle it: which AI bets are working, which are noise, and what each one means for your business and your people. What comes back are clearer, actionable, adoptable workflows, not more complexity.</p>
+        <BookingCta variant="light" helper="30 minutes. No charge. No pitch." />
+      </div>
+      <div class="max-[860px]:max-w-[460px]">
+        <HeroArt />
+      </div>
+    </div>
+  </section>
 
-	<!-- Hero -->
-	<section class="flex items-center justify-center min-h-[85vh] px-6">
-		<h1 class="max-w-3xl text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-stone-900 text-center">
-			Technical problems keeping you up at night? I put them to rest.
-		</h1>
-	</section>
+  <!-- COMMON SCENARIOS -->
+  <section class="py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>Common scenarios</Eyebrow>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">A few of the moments people call me in for.</h2>
+      <div class="flex flex-col gap-[14px] mt-9">
+        {scenarios.map(s => <ScenarioCard index={s.index} tag={s.tag} body={s.body} />)}
+      </div>
+    </div>
+  </section>
 
-	<!-- Does This Sound Like You? -->
-	<section class="px-6 py-24 max-w-3xl mx-auto">
-		<h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-12">Does This Sound Like You?</h2>
-		<ul class="space-y-6 text-lg text-stone-700 list-disc list-outside pl-6 marker:text-stone-400">
-			<li>You vibe-coded an app, but you're not an engineer and aren't sure how to support it with live users.</li>
-			<li>Your senior technical staff doesn't have enough time to spend in areas they are most needed.</li>
-			<li>Your development has persistent slow-downs or quality issues that are hard to diagnose.</li>
-			<li>You're worried about insufficient technical oversight — unsupervised AI processes, junior engineers, or inherited tech debt.</li>
-			<li>Your upcoming launch secures critical revenue, and you need to de-risk it from the engineering side.</li>
-		</ul>
-		<div class="mt-12">
-			<BookingCta />
-		</div>
-	</section>
+  <!-- WHAT I DO -->
+  <section class="bg-tint-band py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>What I do</Eyebrow>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">Clarify. Disentangle. Execute.</h2>
+      <div class="grid grid-cols-3 gap-[38px] mt-[46px] max-[820px]:grid-cols-1">
+        {whatIDo.map(d => (
+          <div>
+            <div class="font-mono text-[13px] tracking-[0.04em] text-accent font-medium mb-2 uppercase">{d.n}</div>
+            <p class="text-[16.5px] text-[#41463f]">{d.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-	<!-- What I Bring -->
-	<section class="px-6 py-24 max-w-5xl mx-auto">
-		<h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-12">What I Bring</h2>
-		<div class="flex flex-col md:flex-row gap-10 items-start">
-			<Image
-				src={headshotUrl}
-				alt="Jared Cordova"
-				width={192}
-				height={192}
-				class="w-48 h-48 rounded-xl object-cover shrink-0"
-			/>
-			<p class="text-lg leading-relaxed text-stone-700">
-				I've spent 15 years as a builder and leader in high-growth companies — from founding engineer at a bootstrapped startup to senior director leading 35+ engineers. I've launched products from scratch, turned around struggling platforms, and developed engineers into leaders. What sets me apart is that I untangle the full picture: the systems, the people, and the processes — to get at what your business actually needs to thrive.
-			</p>
-		</div>
-		<div class="mt-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-			{proofPoints.map((point) => (
-				<div class="bg-stone-100 rounded-lg p-5 text-center">
-					<p class="text-2xl font-bold text-stone-900">{point.metric}</p>
-					<p class="text-sm text-stone-600 mt-1">{point.description}</p>
-				</div>
-			))}
-		</div>
-		<p class="mt-10 text-center text-xs text-stone-400">
-			Co-inventor, AI health coaching platform patent · Stanford BS in Symbolic Systems
-		</p>
-	</section>
+  <!-- WHAT I BRING -->
+  <section class="py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>What I bring</Eyebrow>
+      <div class="grid grid-cols-[1.55fr_1fr] gap-[54px] items-start mt-10 max-[820px]:grid-cols-1">
+        <div>
+          <p class="text-[18px] text-[#33372f] mb-4">I’ve spent 15 years building and leading inside high-growth companies. I started as a founding engineer at a bootstrapped startup and grew into a senior director leading 35-plus engineers. I’ve launched products from zero to market, turned around platforms that were losing money, and developed managers who became leaders.</p>
+          <p class="text-[18px] text-[#33372f] mb-4">The reason executives bring me into hard moments is that I hold three things at once: the technical work, the business case, and the human dynamics on the team. The last one is where most AI efforts quietly fail. The tools get adopted, but the roles, the habits, and the way managers lead never change to match. I work all three at once, because untangling the technology without untangling the decisions and the people around it just moves the mess somewhere else.</p>
+          <p class="text-[15px] text-muted mt-[30px]"><strong class="text-ink font-semibold">Co-inventor</strong>, AI health coaching platform patent &nbsp;&middot;&nbsp; <strong class="text-ink font-semibold">Stanford</strong> BS in Symbolic Systems</p>
+        </div>
+        <div>
+          <Image
+            src={headshotUrl}
+            alt="Jared Cordova"
+            width={400}
+            height={500}
+            class="w-full aspect-[4/5] rounded-[14px] object-cover"
+          />
+        </div>
+      </div>
+      <!-- Proof tiles -->
+      <div class="grid grid-cols-3 gap-[18px] mt-14 border-t border-line pt-10 max-[820px]:grid-cols-2">
+        {proofPoints.map(p => (
+          <div>
+            <div class="font-mono text-[31px] font-semibold tracking-[-0.02em] text-green">{p.num}</div>
+            <div class="text-[13.5px] text-muted mt-[6px] leading-snug">{p.lbl}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-	<!-- Footer -->
-	<footer class="px-6 py-24 max-w-3xl mx-auto text-center">
-		<p class="text-3xl font-bold tracking-tight text-stone-900 mb-8">
-			Let's talk about what's keeping you up at night.
-		</p>
-		<BookingCta />
-		<div class="mt-12 flex items-center justify-center gap-4">
-			<a href="https://linkedin.com/in/jakcordova" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-stone-400 hover:text-stone-600 transition-colors">
-				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-					<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-				</svg>
-			</a>
-		</div>
-		<div class="mt-8 text-sm text-stone-400">
-			<p>&copy; {new Date().getFullYear()} Cordova Strategy</p>
-			<p class="mt-1">Remote | Sacramento &amp; SF Bay Area</p>
-		</div>
-	</footer>
+  <!-- CASE STUDY -->
+  <section class="bg-tint-band py-[84px]">
+    <div class="max-w-[1080px] mx-auto px-8">
+      <Eyebrow>How this shows up</Eyebrow>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">Featured engagement</h2>
+      <div class="bg-white border border-line rounded-[18px] px-[42px] py-10 mt-[38px]">
+        <div class="text-[13px] tracking-[0.1em] uppercase text-accent font-semibold mb-[10px]">Case study</div>
+        <h3 class="text-[26px] mb-6 max-w-[34ch]">A co-parenting platform built with a non-engineer founder.</h3>
+        {caseStudyRows.map(row => (
+          <div class="grid grid-cols-[130px_1fr] gap-[18px] py-4 border-t border-[#dde3dd] text-[16.5px] text-[#33372f] max-[820px]:grid-cols-1 max-[820px]:gap-1">
+            <div class="font-semibold text-green font-sans">{row.k}</div>
+            <div>{row.v}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
 </Layout>
