@@ -1,9 +1,11 @@
 ---
 import BookingCta from './BookingCta.astro'
+interface Props { heading: string }
+const { heading } = Astro.props
 ---
 <section class="bg-green py-[84px]">
   <div class="max-w-[1080px] mx-auto px-8 text-center">
-    <h2 class="font-display text-[38px] font-semibold tracking-tight text-white mx-auto mb-7 max-w-[30ch]">Let's clarify your AI strategy and rollout.</h2>
+    <h2 class="font-display text-[38px] font-semibold tracking-tight text-white mx-auto mb-7 max-w-[30ch]">{heading}</h2>
     <BookingCta variant="light" helper="30 minutes. No charge. No pitch." />
   </div>
 </section>

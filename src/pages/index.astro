@@ -5,41 +5,44 @@ import CtaBand from '../components/CtaBand.astro'
 import Eyebrow from '../components/Eyebrow.astro'
 import ScenarioCard from '../components/ScenarioCard.astro'
 import HeroArt from '../components/HeroArt.astro'
+import SecondaryCta from '../components/SecondaryCta.astro'
 import { Image } from 'astro:assets'
 
 const headshotUrl = 'https://assets.cordovastrategy.com/headshot.jpg'
 
 const scenarios = [
-  { index: '01', tag: 'The AI-first mandate', body: 'Your CEO has declared the company AI-first. Your engineering org is trying to add AI to the workflow, but you can’t tell if it’s actually helping the team deliver quality results, faster.' },
-  { index: '02', tag: 'The buried CTO', body: 'You’re a CTO getting pulled into the weeds on every problem. The strategic work that should fill your week, the next year, the next hire, the next architectural call, keeps getting bumped.' },
-  { index: '03', tag: 'The non-engineer founder', body: 'You shipped a product on AI tools, you have real users, and you don’t know how to assess whether what you built will hold up.' },
-  { index: '04', tag: 'Runaway AI spend', body: 'Your AI spend is climbing, and you can’t tell which of it is moving the business forward and which is just expensive churn.' },
+  { index: '01', tag: 'The AI-first mandate', body: 'Your CEO has declared the company AI-first. Your engineering organization is moving, but you can\'t tell whether it\'s moving in the right direction.' },
+  { index: '02', tag: 'The buried CTO', body: 'You\'re a CTO getting pulled into the weeds on every problem. The strategic work that should fill your week, the next year, the next hire, the next architectural call, keeps getting bumped.' },
+  { index: '03', tag: 'The non-engineer founder', body: 'You\'re a non-engineer founder. You shipped a product on AI tools, you have real users, and you don\'t know how to assess whether what you built will hold up.' },
+  { index: '04', tag: 'Runaway AI spend', body: 'Your AI spend is climbing, and you can\'t tell which of it is moving the business forward and which is just expensive churn.' },
   { index: '05', tag: 'Tool overload', body: 'There are a thousand AI tools and every vendor swears theirs is essential. Not all of them fit your organization or your workflow, and the wrong stack quietly becomes a bottleneck you pay for later.' },
-  { index: '06', tag: 'Managers in the deep end', body: 'Your engineering managers are talented, but they haven’t led through this kind of ambiguity before. You need them driving the organization through it, not waiting for it to resolve.' },
+  { index: '06', tag: 'Managers in the deep end', body: 'Your engineering managers are talented, but they haven\'t led through this kind of ambiguity before. You need them driving the company through it, not waiting for it to resolve.' },
 ]
 
 const whatIDo = [
-  { n: '01 — Clarify', body: 'I jump in on the deep end of the pool, analyze your existing workflows, interview key stakeholders and team members, and observe your machine in motion.' },
-  { n: '02 — Disentangle', body: 'I look at it from the technical angle, the business angle, and the people angle, and I disentangle the actual problem from the noise.' },
-  { n: '03 — Execute', body: 'Once it’s defined, I come back to you with a plan on how to execute it, then go in and work with the team directly.' },
+  { n: '01 · Clarify', body: 'I clarify what\'s happening in the weeds: technical decisions nobody realized had business implications, or conversations that should have started somewhere else entirely.' },
+  { n: '02 · Disentangle', body: 'I look at it from the technical, business, and people angles, and disentangle the actual problem from the noise around it.' },
+  { n: '03 · Execute', body: 'I don\'t hand you a recommendation and leave. I get the work done, or make your team capable of doing it without me, whichever is right for the situation.' },
 ]
 
 const proofPoints = [
   { num: '$2.3M+', lbl: 'Annual cost savings through platform modernization' },
+  { num: '90%', lbl: 'Partner retention through data platform migration' },
   { num: '50%', lbl: 'Faster incident resolution through modernized tooling' },
   { num: 'Millions', lbl: 'Users supported through infrastructure scaling' },
+  { num: '2', lbl: 'Products built and launched from zero to market' },
 ]
 
 const caseStudyRows = [
-  { k: 'Situation', v: 'The founder had a clear product vision and no in-house engineering. She had shipped a working prototype on AI tools and was facing real users, a feature roadmap, and questions she didn’t know how to answer about reliability, security, and scale.' },
-  { k: 'Work', v: 'I came in as the technical half of a two-person partnership. I built and shipped the production version on Lovable and Supabase, sized and prioritized features against feasibility, and translated the technical posture into language she could use with beta users and investors.' },
-  { k: 'Outcome', v: 'The product is live, in user testing, and on track for submission. The founder has a written technical roadmap she can carry into a fundraising conversation and a clear sense of which decisions are hers and which she can hand to me.' },
+  { k: 'Situation', v: 'The founder of DayTag had a clear product vision and no in-house engineering. She had shipped a working prototype on AI tools and was facing real users, a feature roadmap, and questions she didn\'t know how to answer about reliability, security, and scale.' },
+  { k: 'Work', v: 'I came in as the technical expert of a three person venture. I built and shipped the production version of the application on Lovable and Supabase, sized and prioritized features against feasibility, and translated the technical posture of the platform into language the founders could use with prospective beta users and investors.' },
+  { k: 'Outcome', v: 'The product is live, in user testing, and on track for submission. The founder has a written technical roadmap she can carry into a fundraising conversation and a clear sense of which decisions she needs to make and which she can hand to me.' },
 ]
 ---
 
 <Layout
-  title="Cordova Strategy — Jared Cordova"
-  description="Fractional engineering leadership for companies navigating AI adoption. Jared Cordova clarifies your AI strategy, untangles technical and people decisions, and executes alongside your team."
+  title="Cordova Strategy: AI Transformation Consulting for Engineering Teams"
+  description="Cordova Strategy helps executive teams turn AI adoption inside their engineering and product orgs into a structured, predictable driver of business value. Diagnostics, transformation, and engineering leadership development."
 >
   <!-- HERO -->
   <section class="bg-green text-white py-[92px] pb-[88px]">
@@ -47,7 +50,7 @@ const caseStudyRows = [
       <div>
         <Eyebrow onDark>Fractional engineering leadership</Eyebrow>
         <p class="font-display text-[28px] font-medium text-[#a9c6b6] max-w-[30ch] mb-[6px] leading-snug tracking-normal">Your engineering team is adopting AI.</p>
-        <h1 class="text-[44px] max-w-[18ch] mb-[22px]">But is AI making your organization <span class="text-[#7fb295]">stronger</span> or just faster at the wrong things?</h1>
+        <h1 class="text-[44px] max-w-[18ch] mb-[22px]">But is AI making your company <span class="text-[#7fb295]">stronger</span> or just faster at the wrong things?</h1>
         <p class="text-[19.5px] leading-[1.58] text-on-green-body max-w-[48ch] mb-[34px] font-sans">I get into the technical detail and untangle it: which AI bets are working, which are noise, and what each one means for your business and your people. What comes back are clearer, actionable, adoptable workflows, not more complexity.</p>
         <BookingCta variant="light" helper="30 minutes. No charge. No pitch." />
       </div>
@@ -61,7 +64,7 @@ const caseStudyRows = [
   <section class="py-[84px]">
     <div class="max-w-[1080px] mx-auto px-8">
       <Eyebrow>Common scenarios</Eyebrow>
-      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">A few of the moments people call me in for.</h2>
+      <h2 class="text-[38px] mb-[14px] max-w-[20ch]">Does this sound like you?</h2>
       <div class="flex flex-col gap-[14px] mt-9">
         {scenarios.map(s => <ScenarioCard index={s.index} tag={s.tag} body={s.body} />)}
       </div>
@@ -81,6 +84,9 @@ const caseStudyRows = [
           </div>
         ))}
       </div>
+      <div class="mt-9">
+        <SecondaryCta label="See how I work" href="/solutions" />
+      </div>
     </div>
   </section>
 
@@ -90,8 +96,8 @@ const caseStudyRows = [
       <Eyebrow>What I bring</Eyebrow>
       <div class="grid grid-cols-[1.55fr_1fr] gap-[54px] items-start mt-10 max-[820px]:grid-cols-1">
         <div>
-          <p class="text-[18px] text-[#33372f] mb-4">I’ve spent 15 years building and leading inside high-growth companies. I started as a founding engineer at a bootstrapped startup and grew into a senior director leading 35-plus engineers. I’ve launched products from zero to market, turned around platforms that were losing money, and developed managers who became leaders.</p>
-          <p class="text-[18px] text-[#33372f] mb-4">The reason executives bring me into hard moments is that I hold three things at once: the technical work, the business case, and the human dynamics on the team. The last one is where most AI efforts quietly fail. The tools get adopted, but the roles, the habits, and the way managers lead never change to match. I work all three at once, because untangling the technology without untangling the decisions and the people around it just moves the mess somewhere else.</p>
+          <p class="text-[18px] text-[#33372f] mb-4">I've spent +15 years building and leading inside high-growth companies. I started as a founding engineer at a bootstrapped startup and grew into a senior director leading 35-plus engineers. I've launched products from zero to market, turned around platforms that were losing money, and developed managers who became leaders.</p>
+          <p class="text-[18px] text-[#33372f] mb-4">The reason executives bring me into hard moments is that I can hold the entire situation: the technical work, the business case, and the human dynamics on the team. Most do one well and lose the other two.</p>
           <p class="text-[15px] text-muted mt-[30px]"><strong class="text-ink font-semibold">Co-inventor</strong>, AI health coaching platform patent &nbsp;&middot;&nbsp; <strong class="text-ink font-semibold">Stanford</strong> BS in Symbolic Systems</p>
         </div>
         <div>
@@ -105,7 +111,7 @@ const caseStudyRows = [
         </div>
       </div>
       <!-- Proof tiles -->
-      <div class="grid grid-cols-3 gap-[18px] mt-14 border-t border-line pt-10 max-[820px]:grid-cols-2">
+      <div class="grid grid-cols-5 gap-[18px] mt-14 border-t border-line pt-10 max-[820px]:grid-cols-2">
         {proofPoints.map(p => (
           <div>
             <div class="font-mono text-[31px] font-semibold tracking-[-0.02em] text-green">{p.num}</div>
@@ -123,7 +129,7 @@ const caseStudyRows = [
       <h2 class="text-[38px] mb-[14px] max-w-[20ch]">Featured engagement</h2>
       <div class="bg-white border border-line rounded-[18px] px-[42px] py-10 mt-[38px]">
         <div class="text-[13px] tracking-[0.1em] uppercase text-accent font-semibold mb-[10px]">Case study</div>
-        <h3 class="text-[26px] mb-6 max-w-[34ch]">A co-parenting platform built with a non-engineer founder.</h3>
+        <h3 class="text-[26px] mb-6 max-w-[34ch]">DayTag, a co-parenting platform built with a non-engineer founder.</h3>
         {caseStudyRows.map(row => (
           <div class="grid grid-cols-[130px_1fr] gap-[18px] py-4 border-t border-[#dde3dd] text-[16.5px] text-[#33372f] max-[820px]:grid-cols-1 max-[820px]:gap-1">
             <div class="font-semibold text-green font-sans">{row.k}</div>
@@ -134,5 +140,5 @@ const caseStudyRows = [
     </div>
   </section>
 
-  <CtaBand />
+  <CtaBand heading="Tell me what's not working. I'll help you build a plan forward." />
 </Layout>

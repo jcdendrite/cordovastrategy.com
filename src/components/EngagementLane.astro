@@ -1,5 +1,6 @@
 ---
 import Eyebrow from './Eyebrow.astro'
+import SecondaryCta from './SecondaryCta.astro'
 interface Props {
   eyebrow: string
   title: string
@@ -7,13 +8,18 @@ interface Props {
   body: string
   showsUpAs: string
   isAnchor?: boolean
+  /** Both ctaLabel and ctaHref must be provided together — if only one is passed the CTA silently does not render. */
+  ctaLabel?: string
+  ctaHref?: string
 }
-const { eyebrow, title, forWhom, body, showsUpAs, isAnchor = false } = Astro.props
+const { eyebrow, title, forWhom, body, showsUpAs, isAnchor = false, ctaLabel, ctaHref } = Astro.props
+const hasCta = !!(ctaLabel && ctaHref)
 ---
 <div class={`py-[34px] ${isAnchor ? 'bg-tint-band rounded-2xl px-[34px]' : 'border-t border-line first:border-t-0'}`}>
   <Eyebrow class="mb-[10px]">{eyebrow}</Eyebrow>
   <h2 class="font-display text-[27px] font-semibold mb-[6px]">{title}</h2>
   <p class="text-[16px] text-muted mb-[14px] italic">{forWhom}</p>
   <p class="text-[17px] text-[#33372f] max-w-[74ch] mb-[12px]">{body}</p>
-  <p class="text-[15.5px] text-[#41463f] max-w-[74ch]"><strong class="text-green">How it shows up:</strong> {showsUpAs}</p>
+  <p class={`text-[15.5px] text-[#41463f] max-w-[74ch] ${hasCta ? 'mb-[14px]' : ''}`}><strong class="text-green">How it shows up:</strong> {showsUpAs}</p>
+  {hasCta && <SecondaryCta label={ctaLabel!} href={ctaHref!} />}
 </div>
