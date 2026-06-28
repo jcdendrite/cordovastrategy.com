@@ -5,14 +5,51 @@ const isHome = currentPath === '/' || currentPath === ''
 const isSolutions = currentPath.startsWith('/solutions')
 ---
 <nav class="sticky top-0 z-50 bg-green text-white" aria-label="Main navigation">
-  <div class="max-w-[1080px] mx-auto px-8 flex items-center gap-7 h-[68px]">
+  <div class="max-w-[1080px] mx-auto px-8 flex items-center h-[68px]">
     <a href="/" class="font-display text-[20px] font-semibold tracking-[-0.01em] text-white no-underline">
       Cordova Strategy<span class="text-[#7fb295]">.</span>
     </a>
     <div class="ml-auto flex items-center gap-[26px]">
       <a href="/" class={`hidden min-[600px]:inline-block text-[15px] font-medium no-underline transition-colors ${isHome ? 'text-white' : 'text-[#dfe8e2] hover:text-white'}`}>Home</a>
       <a href="/solutions" class={`hidden min-[600px]:inline-block text-[15px] font-medium no-underline transition-colors ${isSolutions ? 'text-white' : 'text-[#dfe8e2] hover:text-white'}`}>Solutions</a>
-      <a href="/book-intro" class="bg-accent hover:bg-accent-d text-white text-[14px] font-medium px-5 py-[10px] rounded-full no-underline transition-colors">Book an intro call</a>
+      <a href="/book-intro" class="hidden min-[600px]:inline-block bg-accent hover:bg-accent-d text-white text-[14px] font-medium px-5 py-[10px] rounded-full no-underline transition-colors">Book an intro call</a>
+      <button
+        id="nav-toggle"
+        class="min-[600px]:hidden flex items-center justify-center w-9 h-9 rounded text-white"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+          <rect width="20" height="2" rx="1" fill="currentColor"/>
+          <rect y="6" width="20" height="2" rx="1" fill="currentColor"/>
+          <rect y="12" width="20" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
     </div>
   </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden min-[600px]:hidden bg-green border-t border-[#1e4a39] px-8 pb-6"
+    aria-hidden="true"
+  >
+    <a href="/" class={`block py-4 text-[16px] font-medium no-underline border-b border-[#1e4a39] ${isHome ? 'text-white' : 'text-[#dfe8e2]'}`}>Home</a>
+    <a href="/solutions" class={`block py-4 text-[16px] font-medium no-underline border-b border-[#1e4a39] ${isSolutions ? 'text-white' : 'text-[#dfe8e2]'}`}>Solutions</a>
+    <a href="/book-intro" class="inline-block mt-5 bg-accent text-white text-[15px] font-medium px-6 py-3 rounded-full no-underline">Book an intro call</a>
+  </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle')
+  const menu = document.getElementById('mobile-menu')
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('hidden')
+      menu.classList.toggle('hidden', !isOpen)
+      menu.setAttribute('aria-hidden', String(!isOpen))
+      toggle.setAttribute('aria-expanded', String(isOpen))
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu')
+    })
+  }
+</script>
