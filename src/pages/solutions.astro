@@ -58,7 +58,7 @@ const faqs = [
   { q: 'Are you a fractional CTO?', a: 'Sometimes. The fractional CTO label fits some engagements (a founder-stage non-engineer team with no permanent technical leader yet) and doesn\'t fit others (where there\'s already a CTO and the question is about translation and alignment, not coverage). I\'d rather show up as what the engagement actually needs than wear the label that markets best.' },
   { q: 'How much do engagements cost?', a: 'Engagements scale with scope and duration. A Focused Diagnostic is the most predictable starting point and is fixed fee. After the intro call, I\'ll send you a written proposal with a number on it. Larger engagements get priced after the diagnostic so the scope is honest.' },
   { q: 'Will you replace our existing engineering leadership?', a: 'No. Most of my engagements work alongside the existing CTO or VP Engineering, sometimes as a thought partner, sometimes as a coach to managers a layer down. The few times I\'ve stepped in as the primary technical leader, it has been by direct request from non-engineer founders who didn\'t have one in place.' },
-  { q: 'Do you write code?', a: 'Yes. I\'m hands-on with AI-assisted development tools (Claude Code, Cursor, Lovable) and I\'ve shipped production work with them for clients in the last six months. Whether the engagement involves me writing code depends on what you need from it.' },
+  { q: 'Do you write code?', aStart: 'Yes. I\'m hands-on with AI-assisted development tools (', linkText: 'Claude Code', linkHref: 'https://github.com/jcdendrite/claude-config', aEnd: ', Cursor, Lovable, Gemini, Copilot) and I\'ve shipped production work with them for clients in the last six months. Whether the engagement involves me writing code depends on what you need from it.' },
   { q: 'What size companies do you work with?', a: 'Most often Series A to Series C, with engineering teams between 5 and 100. I also work with earlier-stage non-engineer founders building on AI tools, where the engagement looks more like a partnership than a standard consulting deal.' },
   { q: 'Where are you based?', a: 'Sacramento and the SF Bay Area. Most engagements are remote with occasional in-person time when it matters.' },
   { q: 'How do I know if I should book a call?', a: 'If you can\'t tell whether your engineering organization is moving in the right direction, or you have a decision coming up (an AI bet, a hire, a platform call) and you want a read from someone who has lived through that decision numerous times, 30 minutes on a call is worth your time.' },
@@ -133,7 +133,9 @@ const faqs = [
         {faqs.map(faq => (
           <div class="py-[22px] border-t border-line">
             <h3 class="font-display text-[19px] font-semibold tracking-[-0.01em] mb-[7px]">{faq.q}</h3>
-            <p class="text-[16.5px] text-[#41463f] max-w-[80ch]">{faq.a}</p>
+            <p class="text-[16.5px] text-[#41463f] max-w-[80ch]">
+              {faq.linkHref ? <>{faq.aStart}<a href={faq.linkHref} target="_blank" rel="noopener noreferrer" class="text-accent underline">{faq.linkText}</a>{faq.aEnd}</> : faq.a}
+            </p>
           </div>
         ))}
       </div>
